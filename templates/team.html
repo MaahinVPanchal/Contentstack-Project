@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS link using url_for -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      .team-member {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .team-member img {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">COC-STATS</a>
+
+      <ul class="navlist">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/news">News</a></li>
+        <!-- Updated News Link -->
+        <li><a href="/team">Team</a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <div class="container mt-5">
+      <h1 class="text-center" style="margin-top: 130px; font-weight: 600">
+        {{ title }}
+      </h1>
+      <div class="row">
+        {% for entry in team_members %} {% for member in entry.employees %}
+        <div class="col-md-4 team-member">
+          <img src="{{ member.image.url }}" alt="{{ member.name }}" />
+          <h3>{{ member.name }}</h3>
+          <p>{{ member.short_description }}</p>
+        </div>
+        {% endfor %} {% endfor %}
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+from flask import Flask, render_template
+import contentstack
+import requests  # Import requests if not already done
+import os
+
+app = Flask(__name__)
+
+# Directly add your Contentstack API Key and Delivery Token here
+API_KEY = 'bltc70800559f9ec38f'  # Your Contentstack API Key
+DELIVERY_TOKEN = 'cs113f5f781661cfbd121dd32f'  # Your Contentstack Delivery Token
+ENVIRONMENT = 'staging'  # Use 'staging' environment
+
+def fetch_entries(content_type):
+    url = f"https://eu-cdn.contentstack.com/v3/content_types/{content_type}/entries?environment={ENVIRONMENT}"
+    headers = {
+        "access_token": DELIVERY_TOKEN,
+        "api_key": API_KEY,
+        "Content-Type": "application/json"
+    }
+    
+    # Debugging output
+    print(f"Fetching {content_type} from URL: {url}")
+    print(f"Using headers: {headers}")
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        return response.json().get('entries', [])
+    else:
+        raise ValueError(f"Error fetching {content_type}: {response.status_code} - {response.text}")
+
+@app.route('/')
+@app.route('/news')
+def news():
+    try:
+        headlines = fetch_entries('news')
+        return render_template('home.html', news=headlines, title="home")
+
+    except Exception as e:
+        print(f"Error: {e}")  # Log the error message
+        return "An error occurred while retrieving news."
+
+@app.route('/categories')
+def categories():
+    try:
+        categories = fetch_entries('category')
+        return render_template('categories.html', categories=categories, title="Categories")
+
+    except Exception as e:
+        print(f"Error: {e}")  # Log the error message
+        return "An error occurred while retrieving categories."
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title="about")
+
+if __name__ == "__main__":
+    app.run(debug=True)

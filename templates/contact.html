@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <style>
+      /* Main content styles */
+      main {
+        max-width: 1401px;
+        margin: 154px 133px;
+        padding: 20px;
+        background: linear-gradient(
+          245.59deg,
+          #4d9559 0%,
+          #38703d 28.53%,
+          #133917 75.52%
+        );
+        line-height: 1.5;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+      }
+
+      h1 {
+        font-size: 28px; /* Heading size */
+        margin-bottom: 15px; /* Space below heading */
+        color: #007bff; /* Blue color for heading */
+      }
+
+      p {
+        font-size: 16px; /* Font size for paragraphs */
+        line-height: 1.5; /* Line height for better readability */
+        margin-bottom: 10px; /* Space below paragraphs */
+        color: aquamarine;
+      }
+
+      strong {
+        color: #e15757; /* Darker color for bold text */
+      }
+
+      a {
+        color: #007bff; /* Blue color for links */
+        text-decoration: none; /* Remove underline */
+        transition: color 0.3s; /* Smooth transition for hover effect */
+      }
+
+      a:hover {
+        color: #0056b3; /* Darker blue on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">COC-STATS</a>
+      <nav>
+        <ul class="navlist">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/news">News</a></li>
+          <li><a href="/team">Team</a></li>
+          <li><a href="/categories">Categories</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>{{ contact.title }}</h1>
+      <p><strong>Address:</strong> {{ contact.address }}</p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:{{ contact.email_address }}"
+          >{{ contact.email_address }}</a
+        >
+      </p>
+      <p><strong>Contact Number:</strong> {{ contact.contact_number[0] }}</p>
+    </main>
+  </body>
+</html>

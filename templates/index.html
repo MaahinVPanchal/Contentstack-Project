@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COC-STATS</title>
+
+    <!-- Custom CSS link using url_for -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Boxicons link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    
+    <!-- Remixicons link -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- Google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <a href="/" class="logo">COC-STATS</a> 
+
+        <ul class="navlist">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/news">News</a></li> <!-- Updated News Link -->
+            <li><a href="/team">Team</a></li>
+            <li><a href="/categories">Categories</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h5>#1 Trending</h5>
+            <h4>Lead Supercell</h4>
+            <h1>GOBLINS</h1>
+            <p>Join millions of players worldwide as you build your village, <br> raise a 
+            clan, and compete in epic Clan Wars!!</p>
+            <a href="#">Compare</a>
+            <a href="#" class="ctaa"><i class='bx bx-play'></i>Watch Gameplay</a>
+        </div>
+
+        <div class="hero-img">
+            <img src="{{ url_for('static', filename='image/image2.png') }}" alt="Goblins Image">
+        </div>
+    </section>
+    
+    <div class="icons">
+        <a href="#"><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+        <a href="#"><i class='bx bxl-twitter' ></i></a>
+    </div>
+
+    <div class="scroll-down">
+        <a href="#"><i class='bx bx-down-arrow'></i></a>
+    </div>
+    
+    <!-- Custom JS link using url_for -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,12 +1,154 @@
-{% extends 'layout.html' %}
-{% block content %}
-    <h1>About Page</h1>
-    <p>Contentstack™ is the hub powering omnichannel content, digital experiences, 
-        and personalized customer journeys. It is the industry 
-        leader in the headless content management system (CMS) category. 
-        Marquee customers include Activision Blizzard, Amway, Best Buy, Chase, 
-        Cisco, Dell, Ellie Mae, Express, Farm Bureau Insurance, J.D. Power, Martha Stewart, 
-        Miami HEAT, Riot Games, Shell, Sky, and Walmart. 
-        Contentstack sits at the heart of an award-winning Digital Experience Platform (DXP) 
-        and is the exclusive API-first CMS for the SAP Cloud.</p>
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Custom CSS link using url_for -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <title>{{ about.seo.meta_title }}</title>
+    <meta name="description" content="{{ about.seo.meta_description }}" />
+    <meta name="keywords" content="{{ about.seo.keywords }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <style>
+      /* Container Styles */
+      .container {
+        max-width: 1352px;
+        margin: 141px 125px;
+        padding: 20px;
+        background: linear-gradient(
+          245.59deg,
+          #4d9559 0%,
+          #38703d 28.53%,
+          #133917 75.52%
+        );
+      }
+
+      /* Title Styles */
+      h1 {
+        font-size: 2em; /* Increase font size for the title */
+        margin-bottom: 20px; /* Space below the title */
+        color: #007bff; /* Bootstrap primary color */
+      }
+
+      /* About Content Styles */
+      .about-content {
+        margin-top: 20px; /* Space above the content */
+      }
+
+      /* Image Styles */
+      .image-right {
+        float: right; /* Float the image to the right */
+        margin-left: 20px; /* Space between image and text */
+        border-radius: 4px; /* Slight rounding of image corners */
+      }
+
+      /* Tag List Styles */
+      .tag-list {
+        margin-top: 10px; /* Space above tag list */
+      }
+
+      .tag {
+        display: inline-block; /* Inline-block for tags */
+        background-color: #e2e6ea; /* Light gray background */
+        border-radius: 5px; /* Rounded corners for tags */
+        padding: 5px 10px; /* Padding for tags */
+        margin-right: 5px; /* Space between tags */
+      }
+
+      /* Call to Action Styles */
+      .call-to-action {
+        margin-top: 20px; /* Space above call to action */
+      }
+
+      .btn-link {
+        color: #007bff; /* Bootstrap primary color for links */
+        text-decoration: none; /* Remove underline from links */
+      }
+
+      .btn-link:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .image-right {
+          float: none; /* Reset float on smaller screens */
+          display: block; /* Make image block level */
+          margin: 0 auto 20px; /* Center the image with margin below */
+        }
+
+        .container {
+          padding: 15px; /* Adjust padding for smaller screens */
+        }
+
+        h1 {
+          font-size: 1.5em; /* Smaller title font size */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">COC-STATS</a>
+
+      <ul class="navlist">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/news">News</a></li>
+        <!-- Updated News Link -->
+        <li><a href="/team">Team</a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+    <div class="container">
+      <h1>{{ about.page_components[0].sections.title_h2 }}</h1>
+      <div class="about-content">
+        <img
+          src="https://eu-images.contentstack.com/v3/assets/bltc70800559f9ec38f/bltab07a2a5276b2779/67169b35f856e5e427bfece1/4.jpg"
+          alt="Goblin Army"
+          class="image-right"
+          style="max-width: 200px"
+        />
+        <p style="color: aquamarine; line-height: 2rem; font-size: 1.1rem">
+          {{ about.page_components[0].sections.description }}
+        </p>
+
+        <p style="color: wheat; margin-top: 20px; font-size: 1.12rem">
+          For more information, visit our website:
+          <a href="{{ about.url }}" target="_blank" style="color: chartreuse"
+            >{{ about.url }}</a
+          >
+        </p>
+        <div class="tag-list">
+          <strong style="color: wheat">Tags:</strong>
+          {% for tag in about.tags %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        <div class="call-to-action mt-4">
+          <strong style="color: wheat"
+            >Learn more about the Goblin Army:</strong
+          >
+          <br />
+          <a
+            href="https://clashofclans.fandom.com/wiki/Goblin"
+            class="btn btn-link"
+            target="_blank"
+            style="color: chartreuse; font-size: 1.1rem; font-weight: bold"
+            >Clash of Clans Official Wiki - Goblin</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
